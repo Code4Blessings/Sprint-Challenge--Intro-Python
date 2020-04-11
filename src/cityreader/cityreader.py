@@ -1,4 +1,4 @@
-import csv
+from csv import DictReader
 
 # We have a collection of US cities with population over 750,000 stored in the
 # file "cities.csv". (CSV stands for "comma-separated values".)
@@ -35,15 +35,22 @@ def cityreader(cities=[]):
   # TODO Implement the functionality to read from the 'cities.csv' file
   # For each city record, create a new City instance and add it to the 
   # `cities` list
-  import csv
-  with open('cities.csv', newline='') as csvfile:
+  
+  # with open('src/cityreader/cities.csv') as csvfile:
+   
+  #    csv_reader = reader(csvfile) 
+  #    for row in csv_reader: 
+  #      city = City(row[0], row[2], row[3])
+  #      cities.append(city)
 
-     reader = csv.DictReader(csvfile) 
-     for row in reader: 
-       cities.append(City(row["city"], row["lat"], row["lon"]))
+   with open('src/cityreader/cities.csv', newline='') as csvfile:  
+       reader = DictReader(csvfile)  
+       for row in reader:  
+           cities.append(City(row["city"], row["lat"], row['lng']))
+
+
        return cities
-      
-
+        
 cityreader(cities)
 
 # Print the list of cities (name, lat, lon), 1 record per line.
@@ -81,12 +88,12 @@ for c in cities:
 
 # TODO Get latitude and longitude values from the user
 
-def cityreader_stretch(lat1, lon1, lat2, lon2, cities=[]):
+  #def cityreader_stretch(lat1, lon1, lat2, lon2, cities=[]):
   # within will hold the cities that fall within the specified region
-  within = []
+    #within = []
 
   # TODO Ensure that the lat and lon valuse are all floats
   # Go through each city and check to see if it falls within 
   # the specified coordinates.
 
-  return within
+    #return within
